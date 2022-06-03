@@ -1,0 +1,10 @@
+{
+  "ethereum": {
+    "startMintId": 0,
+    "endMintId": 1907
+  },
+  "rinkeby": {
+    "startMintId": 0,
+    "endMintId": 1907
+  }
+}
