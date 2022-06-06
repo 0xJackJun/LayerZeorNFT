@@ -84,8 +84,8 @@ contract UniversalONFT721 is Ownable, ONFT721, ReentrancyGuard {
         }
     }
 
-    function publicMint(address _user) external payable {
-        _mint(_user);
+    function publicMint() external {
+        _mint(msg.sender);
     }
 
     function tokenURI(uint256 tokenId)
@@ -101,5 +101,17 @@ contract UniversalONFT721 is Ownable, ONFT721, ReentrancyGuard {
 
     function setBaseURI(string memory _baseURI) public onlyOwner {
         baseURI = _baseURI;
+    }
+
+    function isWhitelisted(address _user) external view returns (bool) {
+        return ledger[_user].length > 0;
+    }
+
+    function getTokenListPerUser(address _user)
+        external
+        view
+        returns (uint256[] memory)
+    {
+        return ledger[_user];
     }
 }

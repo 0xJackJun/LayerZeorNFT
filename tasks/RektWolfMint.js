@@ -4,8 +4,7 @@ module.exports = async function (taskArgs, hre) {
   console.log(`[source] rektWolfNFT.address: ${rektWolfNFT.address}`);
 
   try {
-    let mintAmount = 1;
-    let tx = await (await rektWolfNFT.mint(mintAmount)).wait();
+    let tx = await (await rektWolfNFT.publicMint()).wait();
     console.log(`✅ [${hre.network.name}] mint()`);
     console.log(` tx: ${tx.transactionHash}`);
     let onftTokenId = await ethers.provider.getTransactionReceipt(
