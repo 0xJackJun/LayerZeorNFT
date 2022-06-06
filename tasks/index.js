@@ -25,3 +25,10 @@ task(
 )
   .addParam("targetNetwork", "the chainId to transfer to")
   .addParam("tokenId", "the tokenId of ONFT");
+
+task(
+  "RektWolfSetLedger",
+  "set wallet address to mint nfts",
+  require("./RektWolfSetLedger")
+).addParam("walletAddress", "the wallet address to mint nfts")
+  .addParam("assignTokenList", "the tokenId of ONFT");

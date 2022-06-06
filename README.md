@@ -35,23 +35,13 @@ With a valid .env file in place, first deploy your contract:
 
 
 ```sh
-npx hardhat deploy --network bsc-testnet --tags RektWolfNFT
+npx hardhat deploy --network mumbai --tags RektWolfNFT
 
-npx hardhat verify --network bsc-testnet --constructor-args "args/bscTestnet.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
+npx hardhat verify --network mumbai --constructor-args "args/mumbai.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
 
 npx hardhat deploy --network rinkeby --tags RektWolfNFT
 
 npx hardhat verify --network rinkeby --constructor-args "args/rinkeby.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
-
------------------- For Polygon and Mumbai --------------------
-
-npx hardhat deploy --network polygon --tags RektWolfNFT
-
-npx hardhat verify --network polygon --constructor-args "args/polygon.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
-
-npx hardhat deploy --network mumbai --tags RektWolfNFT
-
-npx hardhat verify --network mumbai --constructor-args "args/mumbai.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
 
 ```
 
@@ -67,23 +57,23 @@ Repeat above command line for all chains each other.
 
 
 ```sh
-npx hardhat --network bsc-testnet RektWolfMint
+npx hardhat --network rinkeby RektWolfSetLedger --wallet-address [wallet address] --assign-token-list [token list, for example 1,2,3]
 
 npx hardhat --network rinkeby RektWolfMint
 ```
 
 ```sh
-npx hardhat --network bsc-testnet RektWolfOwnerOf --token-id 1
+npx hardhat --network rinkeby RektWolfOwnerOf --token-id 1
 
-npx hardhat --network mumbai RektWolfOwnerOf --token-id 2
+npx hardhat --network rinkeby RektWolfOwnerOf --token-id 2
 ```
 
 ```sh
-npx hardhat --network mumbai RektWolfSend --target-network bsc-testnet --token-id 1
+npx hardhat --network rinkeby RektWolfSend --target-network mumbai --token-id 1
 ```
 
 ```sh
-npx hardhat --network bsc-testnet RektWolfOwnerOf --token-id 1
+npx hardhat --network rinkeby RektWolfOwnerOf --token-id 1
 
-npx hardhat --network mumbai RektWolfOwnerOf --token-id 2
+npx hardhat --network mumbai RektWolfOwnerOf --token-id 1
 ```

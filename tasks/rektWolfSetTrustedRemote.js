@@ -19,14 +19,15 @@ module.exports = async function (taskArgs, hre) {
     );
     console.log(` tx: ${tx.transactionHash}`);
   } catch (e) {
-    if (
-      e.error.message.includes(
-        "The trusted source address has already been set for the chainId"
-      )
-    ) {
-      console.log("*trusted source already set*");
-    } else {
-      console.log(e);
-    }
+    // if (
+    //   e.error.message.includes(
+    //     "The trusted source address has already been set for the chainId"
+    //   )
+    // ) {
+    //   console.log("*trusted source already set*");
+    // } else {
+    //   console.log(e);
+    // }
+    console.log(e);
   }
 };
