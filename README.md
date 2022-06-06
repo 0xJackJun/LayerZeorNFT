@@ -1,42 +1,89 @@
-# Advanced Sample Hardhat Project
+# Pozzle Planet Protocol Development
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+#### Local setup
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+To run this project locally, follow these steps.
 
-Try running some of the following tasks:
+1. Clone the project locally, change into the directory, and install the dependencies:
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
+```sh
+git clone https://github.com/PozzlePlanet/protocol-development.git
+
+cd protocol-development
+
+# install using NPM or Yarn
+npm install
+
+# or
+
+yarn
+```
+
+2. Start the local Hardhat node
+
+```sh
 npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.js
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
 ```
 
-# Etherscan verification
+3. Deploy the contracts to the EVM chain or local network in a separate terminal window
 
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
+Copy the .env.example file to a file named .env, and then edit it to fill in the details.
+Enter your PolygonScan API key, your Polygon node URL using Moralis Speedy Nodes, and the
+private key of the account which will send the deployment transaction.
+With a valid .env file in place, first deploy your contract:
 
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
 
-```shell
-hardhat run --network ropsten scripts/deploy.js
+
+```sh
+npx hardhat deploy --network bsc-testnet --tags RektWolfNFT
+
+npx hardhat verify --network bsc-testnet --constructor-args "args/bscTestnet.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
+
+npx hardhat deploy --network rinkeby --tags RektWolfNFT
+
+npx hardhat verify --network rinkeby --constructor-args "args/rinkeby.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
+
+------------------ For Polygon and Mumbai --------------------
+
+npx hardhat deploy --network polygon --tags RektWolfNFT
+
+npx hardhat verify --network polygon --constructor-args "args/polygon.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
+
+npx hardhat deploy --network mumbai --tags RektWolfNFT
+
+npx hardhat verify --network mumbai --constructor-args "args/mumbai.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
+
 ```
 
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
+```sh
+npx hardhat --network [from chain] rektWolfSetTrustedRemote --target-network [to chain]
 
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
+```
+
+Repeat above command line for all chains each other.
+
+
+4. To test the contract run the test scripts in the test folder
+
+
+```sh
+npx hardhat --network bsc-testnet RektWolfMint
+
+npx hardhat --network rinkeby RektWolfMint
+```
+
+```sh
+npx hardhat --network bsc-testnet RektWolfOwnerOf --token-id 1
+
+npx hardhat --network mumbai RektWolfOwnerOf --token-id 2
+```
+
+```sh
+npx hardhat --network mumbai RektWolfSend --target-network bsc-testnet --token-id 1
+```
+
+```sh
+npx hardhat --network bsc-testnet RektWolfOwnerOf --token-id 1
+
+npx hardhat --network mumbai RektWolfOwnerOf --token-id 2
 ```
