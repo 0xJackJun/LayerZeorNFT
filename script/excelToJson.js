@@ -13,17 +13,19 @@ let ethAddress = [];
 
 for (i = 0; i < data.length; i++) {
     let temp = [];
-    if (typeof (data[i].TOKEN_ID) === 'string') {
-        temp = data[i].TOKEN_ID.split(',');
-        var res = temp.map(function (item) { return parseInt(item, 10); });
-        tokenId.push(res);
-    } else {
-        temp[0] = data[i].TOKEN_ID;
-        tokenId.push(temp);
-    }
+    temp[0] = data[i].TOKEN_ID;
+    tokenId.push(temp);
     ethAddress.push(data[i].ETH_ADDRESS);
 }
-
+for (i = 0; i < ethAddress.length; i++) {
+    for (j = i + 1; j < ethAddress.length; j++) {
+        if (ethAddress[i] == ethAddress[j]) {
+            tokenId[i].push(tokenId[j][0]);
+            tokenId.splice(j, 1);
+            ethAddress.splice(j, 1);
+        }
+    }
+}
 address = JSON.stringify(ethAddress)
 id = JSON.stringify(tokenId)
 address = 'module.exports = ' + address;
