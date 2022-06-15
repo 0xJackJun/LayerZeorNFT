@@ -32,3 +32,9 @@ task(
   require("./RektWolfSetLedger")
 ).addParam("walletAddress", "the wallet address to mint nfts")
   .addParam("assignTokenList", "the tokenId of ONFT");
+
+task(
+  "SetLedgerOneTime",
+  "set wallet address to mint nfts",
+  require("./SetLedgerOneTime")
+)
