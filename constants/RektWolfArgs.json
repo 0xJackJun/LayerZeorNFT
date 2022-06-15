@@ -3,15 +3,47 @@
     "startMintId": 1,
     "endMintId": 2222
   },
-  "rinkeby": {
-    "startMintId": 1,
-    "endMintId": 2222
-  },
   "polygon": {
     "startMintId": 1,
     "endMintId": 2222
   },
+  "bsc": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "avalanche": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "arbitrumOne": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "optimism": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "rinkeby": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "bsc-testnet": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "fuji": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
   "mumbai": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "arbitrum-rinkeby": {
+    "startMintId": 1,
+    "endMintId": 2222
+  },
+  "optimism-kovan": {
     "startMintId": 1,
     "endMintId": 2222
   }
