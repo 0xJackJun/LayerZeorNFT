@@ -68,3 +68,15 @@ npx hardhat --network rinkeby RektWolfOwnerOf --token-id 1
 
 npx hardhat --network mumbai RektWolfOwnerOf --token-id 1
 ```
+
+## use script convert excel to js file
+```sh
+cd script
+node excelToJson.js
+```
+then you will find id.json and address.js. Make sure address and id are correct. For example, there is no null value in address.js.
+finally, use
+```sh
+npx hardhat --network rinkeby SetLedgerOneTime
+```
+to set ledger in one-time.

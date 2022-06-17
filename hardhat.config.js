@@ -111,7 +111,7 @@ module.exports = {
       url: "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161", // public infura endpoint
       chainId: chainIds.rinkeby,
       accounts: accounts(),
-      gas: 2100000,
+      gas: 21000000,
       gasPrice: 8000000000,
     },
     "bsc-testnet": {
