@@ -1,7 +1,7 @@
 let xlsx = require('xlsx');
 let fs = require('fs');
 const { type } = require('os');
-let workbook = xlsx.readFile('RW_WL_database.xlsx');
+let workbook = xlsx.readFile('RW_WL.xlsx');
 
 let sheetNames = workbook.SheetNames;
 
