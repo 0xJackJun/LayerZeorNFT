@@ -1,6 +1,6 @@
 # Pozzle Planet Protocol Development
 
-#### Local setup
+## Local setup
 
 To run this project locally, follow these steps.
 
@@ -9,14 +9,9 @@ To run this project locally, follow these steps.
 ```sh
 git clone https://github.com/PozzlePlanet/protocol-development.git
 
-cd protocol-development
+cd rekt-wolf-nft
 
-# install using NPM or Yarn
-npm install
-
-# or
-
-yarn
+yarn install
 ```
 
 2. Start the local Hardhat node
@@ -24,15 +19,11 @@ yarn
 ```sh
 npx hardhat node
 ```
-
-3. Deploy the contracts to the EVM chain or local network in a separate terminal window
+## Deploy to chain
+1. Deploy the contracts to the EVM chain or local network in a separate terminal window
 
 Copy the .env.example file to a file named .env, and then edit it to fill in the details.
-Enter your PolygonScan API key, your Polygon node URL using Moralis Speedy Nodes, and the
-private key of the account which will send the deployment transaction.
-With a valid .env file in place, first deploy your contract:
-
-
+Get the relevant network apis keys from https://polygonscan.com/, https://etherscan.io/ etc.
 
 ```sh
 npx hardhat deploy --network mumbai --tags RektWolfNFT
@@ -44,16 +35,16 @@ npx hardhat deploy --network rinkeby --tags RektWolfNFT
 npx hardhat verify --network rinkeby --constructor-args "args/rinkeby.js" --contract "contracts/RektWolfNFT.sol:RektWolfNFT" [deployed address]
 
 ```
-
+To enable the transfer of NFT's fron one chain to another run below:
 ```sh
 npx hardhat --network [from chain] rektWolfSetTrustedRemote --target-network [to chain]
 
 ```
-
 Repeat above command line for all chains each other.
 
 
-4. To test the contract run the test scripts in the test folder
+## Testing
+1. To test the contract run the test scripts in the test folder
 
 
 ```sh
@@ -77,15 +68,8 @@ npx hardhat --network rinkeby RektWolfOwnerOf --token-id 1
 
 npx hardhat --network mumbai RektWolfOwnerOf --token-id 1
 ```
-
-## use script convert excel to js file
-```sh
-cd script
-node excelToJson.js
-```
-then you will find id.json and address.js. Make sure address and id are correct. For example, there is no null value in address.js.
-finally, use
+## Add whitelist
+* set ledger in one-time.
 ```sh
 npx hardhat --network rinkeby SetLedgerOneTime
 ```
-to set ledger in one-time.
