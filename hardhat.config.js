@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+require("hardhat-gas-reporter");
 dotenv.config();
 
 const { task } = require("hardhat/config");
@@ -254,4 +255,3 @@ module.exports = {
     },
   },
 };
-

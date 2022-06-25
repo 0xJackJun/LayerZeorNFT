@@ -16,6 +16,7 @@
     "hardhat": "^2.9.6",
     "hardhat-deploy": "^0.11.4",
     "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
     "ipfs-http-client": "50.1.2",
     "next": "11.0.1",
     "react": "17.0.2",

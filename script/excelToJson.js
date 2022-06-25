@@ -17,17 +17,32 @@ for (i = 0; i < data.length; i++) {
     tokenId.push(temp);
     ethAddress.push(data[i].ETH_ADDRESS);
 }
+
+let newEthAddressMap = new Map();
 for (i = 0; i < ethAddress.length; i++) {
-    for (j = i + 1; j < ethAddress.length; j++) {
-        if (ethAddress[i] == ethAddress[j]) {
-            tokenId[i].push(tokenId[j][0]);
-            tokenId.splice(j, 1);
-            ethAddress.splice(j, 1);
+    if (!newEthAddressMap.has(ethAddress[i])) {
+        newEthAddressMap.set(ethAddress[i], tokenId[i]);
+        let id = [tokenId[i][0]];
+        for (j = i + 1; j < ethAddress.length; j++) {
+            if (ethAddress[i] == ethAddress[j]) {
+                id.push(tokenId[j][0]);
+                newEthAddressMap.set(ethAddress[i], id);
+                // tokenId.splice(j, 1);
+                // ethAddress.splice(j, 1);
+            }
         }
     }
 }
-address = JSON.stringify(ethAddress)
-id = JSON.stringify(tokenId)
+let newTokenId = [];
+let newEthAddress = [];
+newEthAddressMap.forEach(function (value, key) {
+    newEthAddress.push(key);
+    newTokenId.push(Array.from(value));
+    console.log(value, key);
+})
+console.log(newTokenId)
+address = JSON.stringify(newEthAddress)
+id = JSON.stringify(newTokenId)
 address = 'module.exports = ' + address;
 id = 'module.exports = ' + id;
 
